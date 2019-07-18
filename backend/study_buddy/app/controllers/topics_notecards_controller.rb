@@ -1,0 +1,2 @@
+class TopicsNotecardsController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class UsersTopicsController < ApplicationController
+end
