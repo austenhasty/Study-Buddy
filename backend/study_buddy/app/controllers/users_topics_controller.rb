@@ -1,2 +1,0 @@
-class UsersTopicsController < ApplicationController
-end
