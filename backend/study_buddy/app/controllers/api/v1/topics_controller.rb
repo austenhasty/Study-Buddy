@@ -7,7 +7,7 @@ class Api::V1::TopicsController < ApplicationController
   end
 
   def show
-    topic = Topic.find_by(id: params[:id])
+    topic = Topic.find(params[:id])
     render json: TopicSerializer.new(topic)
   end
 
@@ -21,7 +21,7 @@ class Api::V1::TopicsController < ApplicationController
   end
 
   def update
-    topic = Topic.find_by(id: params[:id])
+    topic = Topic.find(params[:id])
     if topic.update(topic_params)
       render json: TopicSerializer.new(topic)
     else
@@ -31,7 +31,7 @@ class Api::V1::TopicsController < ApplicationController
 
 
   def destroy
-    topic = Topic.find_by(id: params[:id])
+    topic = Topic.find(params[:id])
     if topic.destroy
       render json: TopicSerializer.new(topic)
     else
