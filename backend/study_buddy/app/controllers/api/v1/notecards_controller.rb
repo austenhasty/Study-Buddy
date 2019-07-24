@@ -35,12 +35,12 @@ class Api::V1::NotecardsController < ApplicationController
   end
 
   def update
-    # notecard = Notecard.find(params[:id])
-    # if notecard.update(notecard_params)
-    #   render json: NotecardSerializer.new(notecard)
-    # else
-    #   puts error.full_message
-    # end
+    notecard= Notecard.find(params[:id])
+    if notecard.update(notecard_params)
+      render json: NotecardSerializer.new(notecard)
+    else
+      render json: { error: notecard.errors }
+    end
   end
 
   def destroy
