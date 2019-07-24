@@ -2,7 +2,11 @@ class Api::V1::UsersTopicsController < ApplicationController
   skip_before_action :authorized, only: [:create, :index]
 
   def index
-    users_topics = UsersTopic.all
+    if current_user
+      users_topics = current_user.users_topics
+    else
+      users_topics = UsersTopic.all
+    end
     render json: users_topics
   end
 

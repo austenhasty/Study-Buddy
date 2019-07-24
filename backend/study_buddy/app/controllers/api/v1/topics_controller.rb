@@ -2,7 +2,11 @@ class Api::V1::TopicsController < ApplicationController
   skip_before_action :authorized, only: [:create, :index, :update, :show, :destroy]
 
   def index
-    topics = Topic.all
+    if current_user
+      topics = current_user.topics
+    else
+      topics = Topic.all
+    end
     render json: topics
   end
 
@@ -13,6 +17,9 @@ class Api::V1::TopicsController < ApplicationController
 
   def create
     topic = Topic.new(topic_params)
+    if current_user
+      user_topic = UsersTopic.create(topic: topic, user: current_user)
+    end
     if topic.save
       render json: {topic: TopicSerializer.new(topic) }, status: :created
     else
