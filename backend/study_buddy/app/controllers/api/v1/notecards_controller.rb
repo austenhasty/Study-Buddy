@@ -48,7 +48,7 @@ class Api::V1::NotecardsController < ApplicationController
     if notecard.destroy
       render json: NotecardSerializer.new(notecard)
     else
-      puts error.full_message
+      render json: { error: notecard.errors }
     end
   end
 

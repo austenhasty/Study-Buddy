@@ -19,6 +19,16 @@ class Api::V1::UsersTopicsController < ApplicationController
     end
   end
 
+  def destroy
+    # byebug
+    users_topic = UsersTopic.find(params[:id])
+    if users_topic.destroy
+      render json: {message: "Successfully deleted!"}
+    else
+      render json: { error: users_topic.errors }
+    end
+  end
+
   private
 
   def user_topic_params
