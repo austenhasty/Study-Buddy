@@ -20,14 +20,23 @@ class Api::V1::NotecardsController < ApplicationController
   #   render json: topics
   # end
 
-  def show
-    notecard = Notecard.find(params[:id])
-    render json: NotecardSerializer.new(notecard)
-  end
+  # def show
+  #   notecard = Notecard.find(params[:id])
+  #   render json: NotecardSerializer.new(notecard)
+  # end
 
   def create
+    # e.g. params is like:
+    # params = {
+    #   notecard: {
+    #     term: "thing",
+    #     definition: "its definition"
+    #   },
+    #   topic_id: 7
+    # }
     notecard = Notecard.new(notecard_params)
-    if notecard.save
+    if notecard.save && params[:topic_id]
+      topics_notecard = TopicsNotecard.create(topic_id: params[:topic_id], notecard: notecard)
       render json: { notecard: NotecardSerializer.new(notecard) }, status: :created
     else
       render json: { error: 'failed to create notecard' }, status: :not_acceptable
@@ -55,7 +64,7 @@ class Api::V1::NotecardsController < ApplicationController
   private
 
   def notecard_params
-    params.require(:notecard).permit(:term, :definition)
+    params.require(:notecard).permit(:term, :definition, :topic_id)
   end
 
 end
