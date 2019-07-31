@@ -1,5 +1,5 @@
 class Api::V1::TopicsNotecardsController < ApplicationController
-  skip_before_action :authorized, only: [:create, :index]
+  skip_before_action :authorized, only: [:create, :index, :destroy]
 
   def index
     topics_notecards = TopicsNotecard.all
@@ -14,6 +14,15 @@ class Api::V1::TopicsNotecardsController < ApplicationController
   #     render json: {error: 'failed to create topic notecard relationship' } status: :not_acceptable
   #   end
   # end
+
+def destroy
+  topics_notecard = TopicsNotecard.find(params[:id])
+  if topics_notecard.destroy
+    render json: { message: "Successfully deleted!" }
+  else
+    render json: {error: topics_notecard.errors }
+  end
+end
 
   private
 
