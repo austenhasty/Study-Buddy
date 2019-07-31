@@ -46,7 +46,7 @@ class Api::V1::NotecardsController < ApplicationController
   def update
     notecard= Notecard.find(params[:id])
     if notecard.update(notecard_params)
-      render json: NotecardSerializer.new(notecard)
+      render json: {notecard: NotecardSerializer.new(notecard)}
     else
       render json: { error: notecard.errors }
     end
