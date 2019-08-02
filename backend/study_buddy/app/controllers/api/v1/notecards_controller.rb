@@ -52,14 +52,14 @@ class Api::V1::NotecardsController < ApplicationController
     end
   end
 
-  def destroy
-    notecard = Notecard.find(params[:id])
-    if notecard.destroy
-      render json: NotecardSerializer.new(notecard)
-    else
-      render json: { error: notecard.errors }
-    end
-  end
+  # def destroy
+  #   notecard = Notecard.find(params[:id])
+  #   if notecard.destroy
+  #     render json: NotecardSerializer.new(notecard)
+  #   else
+  #     render json: { error: notecard.errors }
+  #   end
+  # end
 
   private
 
