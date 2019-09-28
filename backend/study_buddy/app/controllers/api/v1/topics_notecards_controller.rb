@@ -6,15 +6,6 @@ class Api::V1::TopicsNotecardsController < ApplicationController
     render json: topics_notecards
   end
 
-  # def create
-  #   topics_notecard = TopicsNotecard.new(topics_notecards_params)
-  #   if topics_notecard.save
-  #     render json: { topic: TopicsNotecardSerializer.new(topics_notecard) } status: :created
-  #   else
-  #     render json: {error: 'failed to create topic notecard relationship' } status: :not_acceptable
-  #   end
-  # end
-
 def destroy
   topics_notecard = TopicsNotecard.find(params[:id])
   if topics_notecard.destroy

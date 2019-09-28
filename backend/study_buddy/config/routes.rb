@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :topics_notecards
       resources :users_topics
-      # resources :users
+      resources :users
       resources :topics
       resources :notecards
       post '/login', to: 'auth#create'
