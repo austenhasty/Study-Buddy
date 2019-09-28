@@ -20,7 +20,6 @@ class Api::V1::UsersTopicsController < ApplicationController
   end
 
   def destroy
-    # byebug
     users_topic = UsersTopic.find(params[:id])
     if users_topic.destroy
       render json: {message: "Successfully deleted!"}
