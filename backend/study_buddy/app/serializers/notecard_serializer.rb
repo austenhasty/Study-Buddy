@@ -1,3 +1,3 @@
 class NotecardSerializer < ActiveModel::Serializer
-  attributes :id, :term, :definition
+  attributes :id, :topic_id, :term, :definition
 end

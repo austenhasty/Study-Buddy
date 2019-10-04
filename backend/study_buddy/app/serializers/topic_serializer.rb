@@ -1,3 +1,3 @@
 class TopicSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :user_id, :name
 end
