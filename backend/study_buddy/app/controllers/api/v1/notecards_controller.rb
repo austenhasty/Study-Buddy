@@ -11,6 +11,10 @@ class Api::V1::NotecardsController < ApplicationController
     render json: Notecard.joins(:topics).where(topics: {id: topic_id})
   end
 
+  # def show
+  #   notecard = Notecard.find_by(id: params[:id])
+  #   render json: NotecardSerializer.new(notecard)
+  # end
 
   def create
     notecard = Notecard.new(notecard_params)
