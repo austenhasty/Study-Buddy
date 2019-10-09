@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_18_215619) do
+ActiveRecord::Schema.define(version: 2019_07_18_225100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,14 +18,19 @@ ActiveRecord::Schema.define(version: 2019_07_18_215619) do
   create_table "notecards", force: :cascade do |t|
     t.string "term"
     t.string "definition"
-    t.integer "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "topics", force: :cascade do |t|
-    t.integer "user_id"
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "topics_notecards", force: :cascade do |t|
+    t.integer "topic_id"
+    t.integer "notecard_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,6 +40,13 @@ ActiveRecord::Schema.define(version: 2019_07_18_215619) do
     t.string "last_name"
     t.string "username"
     t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users_topics", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
