@@ -4,6 +4,8 @@ Rails.application.routes.draw do
       resources :users
       resources :topics
       resources :notecards
+      resources :users_topics
+      resources :topics_notecards
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
       get '/show_by_topic/:topic_id', to: 'notecards#show_by_topic'
