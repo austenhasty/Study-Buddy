@@ -15,6 +15,7 @@ def destroy
   end
 end
 
+
   private
 
   def topics_notecards_params
