@@ -16,7 +16,7 @@ class Api::V1::TopicsController < ApplicationController
   end
 
   def create
-    # byebug
+
     topic = Topic.new(topic_params)
     if current_user
       user_topic = UsersTopic.create(topic: topic, user: current_user)
@@ -36,17 +36,6 @@ class Api::V1::TopicsController < ApplicationController
       render json: { error: topic.errors }
     end
   end
-
-
-  # def destroy
-  #   topic = Topic.find(params[:id])
-  #   if topic.destroy
-  #     render json: TopicSerializer.new(topic)
-  #   else
-  #     render json: { error: topic.errors }
-  #   end
-  #
-  # end
 
   private
 

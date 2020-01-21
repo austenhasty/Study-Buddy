@@ -10,6 +10,7 @@ class Api::V1::UsersTopicsController < ApplicationController
     render json: users_topics
   end
 
+
   def create
     users_topic = UsersTopic.new(user_topic_params)
     if users_topic.save
@@ -19,6 +20,7 @@ class Api::V1::UsersTopicsController < ApplicationController
     end
   end
 
+
   def destroy
     users_topic = UsersTopic.find(params[:id])
     if users_topic.destroy
@@ -27,6 +29,7 @@ class Api::V1::UsersTopicsController < ApplicationController
       render json: { error: users_topic.errors }
     end
   end
+
 
   private
 
